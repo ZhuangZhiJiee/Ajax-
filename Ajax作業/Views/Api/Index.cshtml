@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<ul id="ul1">
+</ul>
+@section Scripts{ 
+<script src="~/js/travel.js"></script>
+    <script>
+        console.log(DATAS.length)
+        //讀取資料
+        const theUl = document.querySelector("#ul1")
+        //建立一個空物件
+        const docFrag = document.createDocumentFragment()
+        for (let i = 0, max = DATAS.length; i < max; i++)
+        {
+            //解構賦值 Destructuring Assigent
+            const { Name, Toldescribe, Tel } = DATAS[i]
+            //顯示資料DOM
+            const txtLi = document.createTextNode(Name + ":" + Toldescribe + ":" + Tel)
+            const eleLi = document.createElement("li")
+            eleLi.appendChild(txtLi)
+
+            docFrag.appendChild(eleLi)
+        }
+        theUl.appendChild(docFrag)
+
+
+
+    </script>
+}
